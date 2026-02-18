@@ -3,18 +3,18 @@ POST http://localhost:5000/api/auth/register
 Content-Type: application/json
 
 {
-  "name": "thrishool",
-  "email": "anurag@stud.com",
-  "password": "Anurag@123456",
-  "role": "student"
+  "name": "suresh",
+  "email": "hr@infosys.com",
+  "password": "infosys@123",
+  "role": "officer"
 }
 ### 
 POST http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
-  "email": "anurag@stud.com",
-  "password": "Anurag@123456"
+  "email": "hr@infosys.com",
+  "password": "infosys@123"
 }
 
 
@@ -42,3 +42,32 @@ Content-Type: application/json
 ### Get Student Profile
 GET http://localhost:5000/api/student/profile
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ODYyNDBlMGY1MmY3ODNhNDg0ZWRlNCIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzcwMzk4Nzc0LCJleHAiOjE3NzA0ODUxNzR9.S-fws9Hcu-eZB9gtvKJ5gMDTwYS7KztPuScsIp9mp_I
+
+###
+POST http://localhost:5000/api/company
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OTVmOTNhMTI3MjdkOWU1NzE4MTdhZSIsInJvbGUiOiJvZmZpY2VyIiwiaWF0IjoxNzcxNDM2MzcxLCJleHAiOjE3NzE1MjI3NzF9.lfinsEVxJrg9P0pH7kZVTVrxLwhY2MamNm_u-4TjWAY
+Content-Type: application/json
+
+{
+  "name": "Infosys",
+  "email": "hr@infosys.com",
+  "hrName": "Suresh",
+  "location": "Bangalore"
+}
+
+
+
+### student job
+POST http://localhost:5000/api/job
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OTVmOTNhMTI3MjdkOWU1NzE4MTdhZSIsInJvbGUiOiJvZmZpY2VyIiwiaWF0IjoxNzcxNDM2MzcxLCJleHAiOjE3NzE1MjI3NzF9.lfinsEVxJrg9P0pH7kZVTVrxLwhY2MamNm_u-4TjWAY
+Content-Type: application/json
+
+{
+  "companyId": "6995f96612727d9e571817b1",
+  "title": "Software Engineer",
+  "minCGPA": 7,
+  "maxBacklogs": 0,
+  "requiredSkills": ["React","Node"],
+  "salary": "6 LPA",
+  "deadline": "2026-06-01"
+}

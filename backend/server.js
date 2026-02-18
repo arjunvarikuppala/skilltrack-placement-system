@@ -5,6 +5,9 @@ import cors from "cors";
 import authRoutes from "./routes/authRoutes.js";
 import testRoutes from "./routes/testRoutes.js";
 import studentRoutes from "./routes/studentRoutes.js";
+import companyRoutes from "./routes/companyRoutes.js";
+import jobRoutes from "./routes/jobRoutes.js";
+
 
 
 const app = express();
@@ -17,7 +20,8 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/test", testRoutes);
 app.use("/api/student",studentRoutes);
-
+app.use("/api/company", companyRoutes);
+app.use("/api/job",jobRoutes);
 
 const connectDB = async () => {
   try {
