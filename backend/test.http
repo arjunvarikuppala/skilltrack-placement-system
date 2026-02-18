@@ -3,18 +3,18 @@ POST http://localhost:5000/api/auth/register
 Content-Type: application/json
 
 {
-  "name": "suresh",
-  "email": "hr@infosys.com",
-  "password": "infosys@123",
-  "role": "officer"
+  "name": "akash.b",
+  "email": "anurag@ds",
+  "password": "anurag2ds123",
+  "role": "student"
 }
 ### 
 POST http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
-  "email": "hr@infosys.com",
-  "password": "infosys@123"
+  "email": "anurag@ds",
+  "password": "anurag2ds123"
 }
 
 
@@ -71,3 +71,17 @@ Content-Type: application/json
   "salary": "6 LPA",
   "deadline": "2026-06-01"
 }
+
+
+### job apply
+POST http://localhost:5000/api/application/apply
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OTYwMWIzMWU5NzRhM2FhNThlYTgxZSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzcxNDM4NTQzLCJleHAiOjE3NzE1MjQ5NDN9.v5Bdknfa8ML1Pgwc33PhHU5Iqnm_gAgWBmglajSP-pI
+Content-Type: application/json
+
+{
+  "jobId": "6995f96612727d9e571817b1"
+}
+
+
+
+
