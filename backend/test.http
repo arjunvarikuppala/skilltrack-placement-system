@@ -3,67 +3,67 @@ POST http://localhost:5000/api/auth/register
 Content-Type: application/json
 
 {
-  "name": "akash.b",
-  "email": "anurag@ds",
-  "password": "anurag2ds123",
-  "role": "student"
+  "name": "anand babu",
+  "email": "gpmc@gmail.com",
+  "password": "babu@123",
+  "role": "officer"
 }
+
 ### 
 POST http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
-  "email": "anurag@ds",
-  "password": "anurag2ds123"
+  "email": "gpmc@gmail.com",
+  "password": "babu@123"
 }
 
 
 ### Profile   (finding the profile cata)
 GET http://localhost:5000/api/test/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ODYxZjBiYTMxY2FiZTVhNzRjNWQ3MyIsInJvbGUiOiJmYWN1bHR5IiwiaWF0IjoxNzcwMzk3NDgzLCJleHAiOjE3NzA0ODM4ODN9.f177wNP6kvmQ7MoGzSx3c2DU1oVVsaUIpnTEW2YF_gg
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OTc2ZTFiN2Y2MWM1NWNiMjJiNGZhOCIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzcxNTMxODI1LCJleHAiOjE3NzE2MTgyMjV9.wmupihzJ0WaNFC7Ke_C17Cfouu5hkpRrL1tvf32A1eo
 
 
 ###
 ### Save Student Profile
 POST http://localhost:5000/api/student/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ODYyNDBlMGY1MmY3ODNhNDg0ZWRlNCIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzcwMzk4Nzc0LCJleHAiOjE3NzA0ODUxNzR9.S-fws9Hcu-eZB9gtvKJ5gMDTwYS7KztPuScsIp9mp_I
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OTc2ZTFiN2Y2MWM1NWNiMjJiNGZhOCIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzcxNTMyODEzLCJleHAiOjE3NzE2MTkyMTN9.n0Arx2_K5CZkoD6wrBKtuvDMD6XuLemyZ45Q4Yk04IA
 Content-Type: application/json
 
 {
-  "rollNo": "23EG112E63",
-  "branch": "CSE",
-  "cgpa": 8.2,
+  "rollNo": "23EG112E34",
+  "branch": "IT",
+  "cgpa": 8.0,
   "backlogs": 0,
-  "skills": ["React","Node","MongoDB"],
-  "batchYear": 2026
+  "skills": ["React","Node","MongoDB","Java"],
+  "batchYear": 2027
 }
 
 ### Get Student Profile
 GET http://localhost:5000/api/student/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ODYyNDBlMGY1MmY3ODNhNDg0ZWRlNCIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzcwMzk4Nzc0LCJleHAiOjE3NzA0ODUxNzR9.S-fws9Hcu-eZB9gtvKJ5gMDTwYS7KztPuScsIp9mp_I
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OTc2ZTFiN2Y2MWM1NWNiMjJiNGZhOCIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzcxNTMyODEzLCJleHAiOjE3NzE2MTkyMTN9.n0Arx2_K5CZkoD6wrBKtuvDMD6XuLemyZ45Q4Yk04IA
 
 ###
 POST http://localhost:5000/api/company
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OTVmOTNhMTI3MjdkOWU1NzE4MTdhZSIsInJvbGUiOiJvZmZpY2VyIiwiaWF0IjoxNzcxNDM2MzcxLCJleHAiOjE3NzE1MjI3NzF9.lfinsEVxJrg9P0pH7kZVTVrxLwhY2MamNm_u-4TjWAY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OTc3MmQ5N2Y2MWM1NWNiMjJiNGZiOCIsInJvbGUiOiJvZmZpY2VyIiwiaWF0IjoxNzcxNTMzMDM3LCJleHAiOjE3NzE2MTk0Mzd9.zofb9wxXWh8LtwTedsHeKo7DmlHa61hkCWNJYU9GVuI
 Content-Type: application/json
 
 {
-  "name": "Infosys",
-  "email": "hr@infosys.com",
+  "name": "gpmc",
+  "email": "gpmc@gmail.com",
   "hrName": "Suresh",
-  "location": "Bangalore"
+  "location": "Hyderbad"
 }
 
 
 
 ### student job
 POST http://localhost:5000/api/job
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OTVmOTNhMTI3MjdkOWU1NzE4MTdhZSIsInJvbGUiOiJvZmZpY2VyIiwiaWF0IjoxNzcxNDM2MzcxLCJleHAiOjE3NzE1MjI3NzF9.lfinsEVxJrg9P0pH7kZVTVrxLwhY2MamNm_u-4TjWAY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OTc2ZTFiN2Y2MWM1NWNiMjJiNGZhOCIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzcxNTMxODI1LCJleHAiOjE3NzE2MTgyMjV9.wmupihzJ0WaNFC7Ke_C17Cfouu5hkpRrL1tvf32A1eo
 Content-Type: application/json
 
 {
-  "companyId": "6995f96612727d9e571817b1",
+  "companyId": "6997732b7f61c55cb22b4fbc",
   "title": "Software Engineer",
   "minCGPA": 7,
   "maxBacklogs": 0,
@@ -75,11 +75,11 @@ Content-Type: application/json
 
 ### job apply
 POST http://localhost:5000/api/application/apply
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OTYwMWIzMWU5NzRhM2FhNThlYTgxZSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzcxNDM4NTQzLCJleHAiOjE3NzE1MjQ5NDN9.v5Bdknfa8ML1Pgwc33PhHU5Iqnm_gAgWBmglajSP-pI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OTc2ZTFiN2Y2MWM1NWNiMjJiNGZhOCIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzcxNTMyODEzLCJleHAiOjE3NzE2MTkyMTN9.n0Arx2_K5CZkoD6wrBKtuvDMD6XuLemyZ45Q4Yk04IA
 Content-Type: application/json
 
 {
-  "jobId": "6995f96612727d9e571817b1"
+  "jobId": "699773817f61c55cb22b4fbf"
 }
 
 

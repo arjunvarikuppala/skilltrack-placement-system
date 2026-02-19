@@ -10,7 +10,10 @@ import { allowRoles } from "../middleware/roleMiddleware.js";
 
 const router = express.Router();
 
-// student applies to job
+
+// ==============================
+// STUDENT → APPLY JOB
+// ==============================
 router.post(
   "/apply",
   protect,
@@ -18,7 +21,10 @@ router.post(
   applyJob
 );
 
-// officer views applicants for a job
+
+// ==============================
+// OFFICER → VIEW APPLICANTS
+// ==============================
 router.get(
   "/job/:jobId",
   protect,
@@ -26,12 +32,16 @@ router.get(
   getApplicants
 );
 
-// officer updates application status
+
+// ==============================
+// OFFICER → UPDATE STATUS
+// ==============================
 router.put(
-  "/:id",
+  "/status/:id",
   protect,
   allowRoles("officer"),
   updateStatus
 );
+
 
 export default router;

@@ -2,24 +2,44 @@ import Job from "../models/Job.js";
 import Student from "../models/Student.js";
 import Application from "../models/Application.js";
 
-// STUDENT APPLY
+
+// ==============================
+// STUDENT APPLY JOB
+// ==============================
 export const applyJob = async (req, res) => {
   try {
     const { jobId } = req.body;
 
+    console.log("TOKEN USER ID:", req.user.id);
+    console.log("JOB ID:", jobId);
+
+    // 🔍 Find job
     const job = await Job.findById(jobId);
-    const student = await Student.findOne({ userId: req.user.id });
+
+    // 🔍 Find student profile
+    const student = await Student.findOne({
+      userId: req.user.id,
+    });
+
+    console.log("FOUND STUDENT:", student);
 
     if (!job || !student) {
-      return res.status(404).json({ message: "Job or Student not found" });
+      return res.status(404).json({
+        message: "Job or Student not found",
+      });
     }
 
+    // 🎓 Eligibility checks
     if (student.cgpa < job.minCGPA) {
-      return res.status(403).json({ message: "CGPA not eligible" });
+      return res.status(403).json({
+        message: "CGPA not eligible",
+      });
     }
 
     if (student.backlogs > job.maxBacklogs) {
-      return res.status(403).json({ message: "Backlogs not eligible" });
+      return res.status(403).json({
+        message: "Backlogs not eligible",
+      });
     }
 
     const missingSkills = job.requiredSkills.filter(
@@ -33,18 +53,23 @@ export const applyJob = async (req, res) => {
       });
     }
 
+    // 🛑 Prevent duplicate apply
     const exists = await Application.findOne({
       jobId,
       studentId: req.user.id,
     });
 
     if (exists) {
-      return res.status(400).json({ message: "Already applied" });
+      return res.status(400).json({
+        message: "Already applied",
+      });
     }
 
+    // ✅ Create application
     const application = await Application.create({
       jobId,
       studentId: req.user.id,
+      status: "Pending",
     });
 
     res.status(201).json({
@@ -53,18 +78,25 @@ export const applyJob = async (req, res) => {
     });
 
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error("APPLY JOB ERROR:", err);
+    res.status(500).json({
+      error: err.message,
+    });
   }
 };
 
-// OFFICER VIEW APPLICANTS
+
+
+// ==============================
+// GET APPLICANTS
+// ==============================
 export const getApplicants = async (req, res) => {
   try {
     const { jobId } = req.params;
 
     const applications = await Application.find({ jobId })
-      .populate("studentId", "name email")
-      .populate("jobId", "title");
+      .populate("studentId", "rollNo branch cgpa")
+      .populate("jobId", "title companyName");
 
     res.json(applications);
 
@@ -73,7 +105,11 @@ export const getApplicants = async (req, res) => {
   }
 };
 
-// OFFICER UPDATE STATUS
+
+
+// ==============================
+// UPDATE APPLICATION STATUS
+// ==============================
 export const updateStatus = async (req, res) => {
   try {
     const { status } = req.body;
