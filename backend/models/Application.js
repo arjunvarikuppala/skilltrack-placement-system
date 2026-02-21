@@ -14,11 +14,17 @@ const applicationSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      enum: ["Pending", "shortlisted", "rejected"],
-      default: "Pending",
+      enum: ["applied", "shortlisted", "rejected", "selected"],
+      default: "applied",
     },
   },
   { timestamps: true }
+);
+
+// Prevent duplicate applications at DB level
+applicationSchema.index(
+  { jobId: 1, studentId: 1 },
+  { unique: true }
 );
 
 export default mongoose.model("Application", applicationSchema);

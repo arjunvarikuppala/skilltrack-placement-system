@@ -3,9 +3,9 @@ POST http://localhost:5000/api/auth/register
 Content-Type: application/json
 
 {
-  "name": "anand babu",
-  "email": "gpmc@gmail.com",
-  "password": "babu@123",
+  "name": "thrishool",
+  "email": "epam@gmail.com",
+  "password": "thrishool",
   "role": "officer"
 }
 
@@ -14,56 +14,56 @@ POST http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
-  "email": "gpmc@gmail.com",
-  "password": "babu@123"
+  "email": "epam@gmail.com",
+  "password": "thrishool"
 }
 
 
 ### Profile   (finding the profile cata)
 GET http://localhost:5000/api/test/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OTc2ZTFiN2Y2MWM1NWNiMjJiNGZhOCIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzcxNTMxODI1LCJleHAiOjE3NzE2MTgyMjV9.wmupihzJ0WaNFC7Ke_C17Cfouu5hkpRrL1tvf32A1eo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OTc3MmQ5N2Y2MWM1NWNiMjJiNGZiOCIsInJvbGUiOiJvZmZpY2VyIiwiaWF0IjoxNzcxNjk0MjgyLCJleHAiOjE3NzE3ODA2ODJ9.JhelfDq1QzQ2rMKFspBycnLij1VY4xW2oK8nMVQJasI
 
 
 ###
 ### Save Student Profile
 POST http://localhost:5000/api/student/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OTc2ZTFiN2Y2MWM1NWNiMjJiNGZhOCIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzcxNTMyODEzLCJleHAiOjE3NzE2MTkyMTN9.n0Arx2_K5CZkoD6wrBKtuvDMD6XuLemyZ45Q4Yk04IA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OTllOWNjNzAxYzQ3Yjk3NDJkYjkwNyIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzcxNjk0NTYxLCJleHAiOjE3NzE3ODA5NjF9.DzcFoba57LV6lwDQTmO6DQc5vwqlSzMaozeZ37g-KJ4
 Content-Type: application/json
 
 {
-  "rollNo": "23EG112E34",
-  "branch": "IT",
-  "cgpa": 8.0,
+  "rollNo": "23EG112E01",
+  "branch": "DS",
+  "cgpa": 8.8,
   "backlogs": 0,
-  "skills": ["React","Node","MongoDB","Java"],
+  "skills": ["React","Node","MongoDB","Java","Cpp"],
   "batchYear": 2027
 }
 
 ### Get Student Profile
 GET http://localhost:5000/api/student/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OTc2ZTFiN2Y2MWM1NWNiMjJiNGZhOCIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzcxNTMyODEzLCJleHAiOjE3NzE2MTkyMTN9.n0Arx2_K5CZkoD6wrBKtuvDMD6XuLemyZ45Q4Yk04IA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OTllOWNjNzAxYzQ3Yjk3NDJkYjkwNyIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzcxNjk0NTYxLCJleHAiOjE3NzE3ODA5NjF9.DzcFoba57LV6lwDQTmO6DQc5vwqlSzMaozeZ37g-KJ4
 
 ###
 POST http://localhost:5000/api/company
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OTc3MmQ5N2Y2MWM1NWNiMjJiNGZiOCIsInJvbGUiOiJvZmZpY2VyIiwiaWF0IjoxNzcxNTMzMDM3LCJleHAiOjE3NzE2MTk0Mzd9.zofb9wxXWh8LtwTedsHeKo7DmlHa61hkCWNJYU9GVuI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OTllYjIxNzAxYzQ3Yjk3NDJkYjkxMiIsInJvbGUiOiJvZmZpY2VyIiwiaWF0IjoxNzcxNjk0OTA3LCJleHAiOjE3NzE3ODEzMDd9.ceaIRspVurWu9NoLUCBKLvJm4UOHJWs9hQ5xPVVZQ6U
 Content-Type: application/json
 
 {
-  "name": "gpmc",
-  "email": "gpmc@gmail.com",
-  "hrName": "Suresh",
+  "name": "epam-software",
+  "email": "epam@gmail.com",
+  "hrName": "thota",
   "location": "Hyderbad"
 }
 
 
 
-### student job
+### student job (company token-officer)
 POST http://localhost:5000/api/job
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OTc2ZTFiN2Y2MWM1NWNiMjJiNGZhOCIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzcxNTMxODI1LCJleHAiOjE3NzE2MTgyMjV9.wmupihzJ0WaNFC7Ke_C17Cfouu5hkpRrL1tvf32A1eo
 Content-Type: application/json
 
 {
-  "companyId": "6997732b7f61c55cb22b4fbc",
+  "companyId": "6999eb64701c47b9742db916c",
   "title": "Software Engineer",
   "minCGPA": 7,
   "maxBacklogs": 0,
@@ -73,9 +73,9 @@ Content-Type: application/json
 }
 
 
-### job apply
+### job apply(token-student)
 POST http://localhost:5000/api/application/apply
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OTc2ZTFiN2Y2MWM1NWNiMjJiNGZhOCIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzcxNTMyODEzLCJleHAiOjE3NzE2MTkyMTN9.n0Arx2_K5CZkoD6wrBKtuvDMD6XuLemyZ45Q4Yk04IA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OTllOWNjNzAxYzQ3Yjk3NDJkYjkwNyIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzcxNjk0NTYxLCJleHAiOjE3NzE3ODA5NjF9.DzcFoba57LV6lwDQTmO6DQc5vwqlSzMaozeZ37g-KJ4
 Content-Type: application/json
 
 {

@@ -3,33 +3,39 @@ import Student from "../models/Student.js";
 import Application from "../models/Application.js";
 
 
-// ==============================
+// ========================================
 // STUDENT APPLY JOB
-// ==============================
+// ========================================
 export const applyJob = async (req, res) => {
   try {
     const { jobId } = req.body;
 
-    console.log("TOKEN USER ID:", req.user.id);
-    console.log("JOB ID:", jobId);
+    if (!jobId) {
+      return res.status(400).json({
+        message: "Job ID is required",
+      });
+    }
 
-    // 🔍 Find job
+    // 1️⃣ Find Job
     const job = await Job.findById(jobId);
+    if (!job) {
+      return res.status(404).json({
+        message: "Job not found",
+      });
+    }
 
-    // 🔍 Find student profile
+    // 2️⃣ Find Student Profile
     const student = await Student.findOne({
       userId: req.user.id,
     });
 
-    console.log("FOUND STUDENT:", student);
-
-    if (!job || !student) {
+    if (!student) {
       return res.status(404).json({
-        message: "Job or Student not found",
+        message: "Student profile not found",
       });
     }
 
-    // 🎓 Eligibility checks
+    // 3️⃣ Eligibility Checks
     if (student.cgpa < job.minCGPA) {
       return res.status(403).json({
         message: "CGPA not eligible",
@@ -53,7 +59,7 @@ export const applyJob = async (req, res) => {
       });
     }
 
-    // 🛑 Prevent duplicate apply
+    // 4️⃣ Prevent Duplicate Application
     const exists = await Application.findOne({
       jobId,
       studentId: req.user.id,
@@ -61,68 +67,91 @@ export const applyJob = async (req, res) => {
 
     if (exists) {
       return res.status(400).json({
-        message: "Already applied",
+        message: "You already applied for this job",
       });
     }
 
-    // ✅ Create application
+    // 5️⃣ Create Application (status uses default from model)
     const application = await Application.create({
       jobId,
       studentId: req.user.id,
-      status: "Pending",
     });
 
     res.status(201).json({
-      message: "Application submitted",
+      message: "Application submitted successfully",
       application,
     });
 
   } catch (err) {
     console.error("APPLY JOB ERROR:", err);
     res.status(500).json({
-      error: err.message,
+      error: "Server error",
     });
   }
 };
 
 
-
-// ==============================
-// GET APPLICANTS
-// ==============================
+// ========================================
+// GET APPLICANTS FOR A JOB (Company)
+// ========================================
 export const getApplicants = async (req, res) => {
   try {
     const { jobId } = req.params;
 
     const applications = await Application.find({ jobId })
-      .populate("studentId", "rollNo branch cgpa")
-      .populate("jobId", "title companyName");
+      .populate({
+        path: "studentId",
+        select: "name email",
+      })
+      .populate({
+        path: "jobId",
+        select: "title companyName",
+      });
 
-    res.json(applications);
+    res.status(200).json(applications);
 
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error("GET APPLICANTS ERROR:", err);
+    res.status(500).json({
+      error: "Server error",
+    });
   }
 };
 
 
-
-// ==============================
-// UPDATE APPLICATION STATUS
-// ==============================
+// ========================================
+// UPDATE APPLICATION STATUS (Company)
+// ========================================
 export const updateStatus = async (req, res) => {
   try {
     const { status } = req.body;
 
-    const application = await Application.findByIdAndUpdate(
-      req.params.id,
-      { status },
-      { new: true }
-    );
+    if (!status) {
+      return res.status(400).json({
+        message: "Status is required",
+      });
+    }
 
-    res.json(application);
+    const application = await Application.findById(req.params.id);
+
+    if (!application) {
+      return res.status(404).json({
+        message: "Application not found",
+      });
+    }
+
+    application.status = status;
+    await application.save();
+
+    res.status(200).json({
+      message: "Status updated successfully",
+      application,
+    });
 
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error("UPDATE STATUS ERROR:", err);
+    res.status(500).json({
+      error: "Server error",
+    });
   }
 };
